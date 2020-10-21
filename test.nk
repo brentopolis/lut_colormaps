@@ -1,0 +1,163 @@
+version 12.2 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="0" y="24" w="1792" h="1009" maximized="1" screen="0">
+        <splitter orientation="1">
+            <split size="40"/>
+            <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                <page id="Toolbar.1"/>
+            </dock>
+            <split size="1129" stretch="1"/>
+            <splitter orientation="2">
+                <split size="581"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                    <page id="Viewer.2"/>
+                </dock>
+                <split size="408"/>
+                <dock id="" activePageId="DAG.1">
+                    <page id="DAG.1"/>
+                    <page id="Curve Editor.1"/>
+                    <page id="DopeSheet.1"/>
+                </dock>
+            </splitter>
+            <split size="615"/>
+            <dock id="" activePageId="Properties.1" focus="true">
+                <page id="Properties.1"/>
+                <page id="uk.co.thefoundry.backgroundrenderview.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /Users/brent/PycharmProjects/colormaps/test.nk
+ project_directory "\[python \{nuke.script_directory()\}]"
+ format "512 512 0 0 512 512 1 square_512"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+Ramp {
+ inputs 0
+ p0 {16 256}
+ p1 {496 256}
+ name Ramp1
+ xpos 180
+ ypos -177
+}
+set N1e9d4c00 [stack 0]
+OCIOFileTransform {
+ file ./lut/gist_earth.cube
+ working_space scene_linear
+ name gist_earth1
+ xpos 620
+ ypos -81
+ dope_sheet true
+ postage_stamp true
+}
+push $N1e9d4c00
+OCIOFileTransform {
+ file ./lut/hot.cube
+ working_space scene_linear
+ name hot
+ xpos 510
+ ypos -81
+ dope_sheet true
+ postage_stamp true
+}
+push $N1e9d4c00
+OCIOFileTransform {
+ file ./lut/magma.cube
+ working_space scene_linear
+ name magma
+ xpos 400
+ ypos -81
+ dope_sheet true
+ postage_stamp true
+}
+push $N1e9d4c00
+OCIOFileTransform {
+ file ./lut/inferno.cube
+ working_space scene_linear
+ name inferno
+ xpos 290
+ ypos -81
+ dope_sheet true
+ postage_stamp true
+}
+push $N1e9d4c00
+OCIOFileTransform {
+ file ./lut/cividis.cube
+ working_space scene_linear
+ name cividis
+ xpos 180
+ ypos -81
+ dope_sheet true
+ postage_stamp true
+}
+push $N1e9d4c00
+OCIOFileTransform {
+ file ./lut/viridis.cube
+ working_space scene_linear
+ name viridis
+ xpos 70
+ ypos -81
+ dope_sheet true
+ postage_stamp true
+}
+push $N1e9d4c00
+OCIOFileTransform {
+ file ./lut/plasma.cube
+ working_space scene_linear
+ name plasma
+ xpos -39
+ ypos -81
+ postage_stamp true
+}
+push $N1e9d4c00
+OCIOFileTransform {
+ file ./turbo.cube
+ working_space scene_linear
+ name turbo
+ selected true
+ xpos -150
+ ypos -81
+ postage_stamp true
+}
+push $N1e9d4c00
+OCIOFileTransform {
+ file ./lut/jet.cube
+ working_space scene_linear
+ name jet
+ xpos -260
+ ypos -81
+ postage_stamp true
+}
+ContactSheet {
+ inputs 9
+ width 512
+ height 512
+ columns 3
+ roworder TopBottom
+ name ContactSheet1
+ xpos 180
+ ypos 39
+}
+set N4fc10400 [stack 0]
+push $N4fc10400
+push $N4fc10400
+Viewer {
+ inputs 3
+ frame_range 1-100
+ name Viewer1
+ xpos 180
+ ypos 111
+}
